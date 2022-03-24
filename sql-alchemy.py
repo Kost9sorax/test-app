@@ -23,8 +23,9 @@ class Endpoint(Base):
     device_id = Column(Integer)
     comment = Column(String)
 
-    def __repr__(self):
-        return f"Devices(id={self.id!r}, device_id={self.device_id!r}, comment={self.comment!r})"
+    def __init__(self, device_id, comment):
+        self.device_id = device_id
+        self.comment = comment
 
 
 dev = Device('def', 'def')
