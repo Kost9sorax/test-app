@@ -1,7 +1,8 @@
-from sqlalchemy import Integer, String
+from sqlalchemy import Integer, String, Index, BIGINT
 from sqlalchemy.sql.schema import Column
 from config import Base, engine
-from sqlalchemy.orm import sessionmaker
+from sqlalchemy.orm import sessionmaker, relationship
+
 Session = sessionmaker()
 session = Session(bind=engine)
 
@@ -19,7 +20,7 @@ class Device(Base):
 
 class Endpoint(Base):
     __tablename__ = 'Endpoints'
-    id = Column(Integer, primary_key=True)
+    id = Column(BIGINT, primary_key=True)
     device_id = Column(Integer)
     comment = Column(String)
 
@@ -28,7 +29,9 @@ class Endpoint(Base):
         self.comment = comment
 
 
-dev = Device('def', 'def')
-session.add(dev)
-session.commit()
+device_index = Index('device_index', Device.dev_id, Device.dev_type)
 
+if __name__ == '__main__':
+    device_index.create(bind=engine)
+
+session.commit()
