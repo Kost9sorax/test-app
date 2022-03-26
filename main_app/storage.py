@@ -31,6 +31,11 @@ def append_elements():
         session.add(Endpoint(ids[i], 'some comment'))
     session.commit()
 
-    devices_without_endpoint = session.query(func.count(Device.id), Device.dev_type).filter(
+    
+def dev_without_endpoint():
+    rows = session.query(func.count(Device.id), Device.dev_type).filter(
         Device.id.notin_(session.query(Endpoint.device_id))).group_by(Device.dev_type).all()
-    print(devices_without_endpoint)
+    new_rows = {}
+    for row in rows:
+        new_rows[row[1]] = row[0]
+    return new_rows
