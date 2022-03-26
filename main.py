@@ -1,4 +1,4 @@
-from main_app.storage import *
+from main_app.storage import append_elements
 from fastapi import FastAPI
 import redis
 from fastapi import Response
@@ -24,7 +24,6 @@ def add_elements():
     append_elements()
     return Response(status_code=201)
 
-add_elements()
 
 def is_anagrams(str_1, str_2):
     len_str_1 = len(str_1)
