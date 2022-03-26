@@ -1,6 +1,6 @@
 import random
-from migrations.models import session, Device, Endpoint
-from main_app.config import engine
+from models import session, Device, Endpoint
+from config import engine
 from sqlalchemy import func
 from randmac import RandMac
 
