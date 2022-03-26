@@ -11,3 +11,8 @@ def get_anagrams(str_1, str_2):
         return {"is anagrams": True, "counter": redis_client.get("counter")}
     else:
         return {"is anagrams": False}
+
+@app.get('/add')
+def add_elements():
+    append_elements()
+    return Response(status_code=201)
