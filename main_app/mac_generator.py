@@ -1,5 +1,5 @@
 import random
-
+import argparse
 
 def random_bytes(num=6):
     return [random.randrange(256) for _ in range(num)]
@@ -24,7 +24,7 @@ def generate_mac(uaa=False, multicast=False, oui=None, separator=':', byte_fmt='
 
 
 def main():
-    import argparse
+   
     parser = argparse.ArgumentParser()
     parser.add_argument('--uaa', action='store_true',
                         help='generates a universally administered address (instead of LAA otherwise)')
