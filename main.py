@@ -1,4 +1,4 @@
-from main_app.storage import append_elements
+from main_app.storage import append_elements, dev_without_endpoint
 from fastapi import FastAPI
 import redis
 from fastapi import Response
@@ -23,6 +23,11 @@ def get_anagrams(str_1, str_2):
 def add_elements():
     append_elements()
     return Response(status_code=201)
+
+
+@app.get('/get_rows')
+def get_rows():
+    return {'rows': dev_without_endpoint()}
 
 
 def is_anagrams(str_1, str_2):
