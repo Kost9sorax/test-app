@@ -2,6 +2,7 @@ from main_app.storage import append_elements, dev_without_endpoint
 from fastapi import FastAPI
 import redis
 from fastapi import Response
+from main_app.checking_anagrams import is_anagrams
 
 redis_client = redis.Redis(host='localhost', port=6379, db=0)
 app = FastAPI()
@@ -29,18 +30,3 @@ def add_elements():
 def get_rows():
     return {'rows': dev_without_endpoint()}
 
-
-def is_anagrams(str_1, str_2):
-    len_str_1 = len(str_1)
-    len_str_2 = len(str_2)
-
-    if len_str_1 != len_str_2:
-        return False
-
-    sort_str_1 = sorted(str_1.lower())
-    sort_str_2 = sorted(str_2.lower())
-
-    for i in range(0, len_str_1):
-        if sort_str_1[i] != sort_str_2[i]:
-            return False
-    return True
