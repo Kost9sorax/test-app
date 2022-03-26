@@ -1,5 +1,5 @@
 from sqlalchemy.sql.schema import Column
-from config import Base, engine
+from main_app.config import Base, engine
 import sqlalchemy.orm
 from sqlalchemy import Integer, String, BIGINT, MetaData, Index
 
