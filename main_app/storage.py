@@ -1,5 +1,5 @@
 import random
-from migrartions.models import session, Device, Endpoint
+from migrations.models import session, Device, Endpoint
 from main_app.config import engine
 from sqlalchemy import func
 from randmac import RandMac
