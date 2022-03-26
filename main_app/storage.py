@@ -1,8 +1,8 @@
 import random
-from main_app.mac_generator import make_mac
 from migrartions.models import session, Device, Endpoint
 from main_app.config import engine
 from sqlalchemy import func
+from randmac import RandMac
 
 types = ['emeter', 'zigbee', 'lora', 'gsm']
 conn = engine.connect()
@@ -14,7 +14,7 @@ def append_elements():
         return dev_type
 
     def get_id():
-        dev_id = make_mac()
+        dev_id = RandMac()
         return str(dev_id)
 
     for i in range(0, 10):
