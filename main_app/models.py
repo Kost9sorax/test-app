@@ -31,6 +31,7 @@ class Endpoint(Base):
 
 
 device_index = Index('device_index', Device.dev_id, Device.dev_type)
-device_index.create(bind=engine)
+if __name__ == '__main__':
+    device_index.create(bind=engine)
 Base.metadata.create_all(engine)
 session.commit()
