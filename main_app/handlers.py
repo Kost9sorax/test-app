@@ -1,5 +1,7 @@
 from main import app, is_anagrams, redis_client
 from main_app.storage import append_elements
+from fastapi import Response
+
 
 @app.get('/{str_1}/{str_2}')
 def get_anagrams(str_1, str_2):
@@ -12,6 +14,7 @@ def get_anagrams(str_1, str_2):
     else:
         return {"is anagrams": False}
 
+    
 @app.get('/add')
 def add_elements():
     append_elements()
