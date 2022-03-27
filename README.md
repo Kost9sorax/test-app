@@ -2,6 +2,8 @@
 
 Для установки всех зависимостей выполнить `pip install -r requirements.txt`
 
+Для запуска редиса с помощью докера выполнить `docker run --name redis-server redis`
+
 Для запуска выполнить  `uvicorn main:app --reload`
 
 Для получения анаграмм выполнить `http://127.0.0.1:8000/first_str/second_str`
